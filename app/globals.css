@@ -34,23 +34,23 @@ body {
 
 @keyframes marqueeTop {
   0% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   100% {
-    transform: translateY(-50%);
+    transform: translateX(-50%);
   }
 }
 
 @keyframes marqueeBottom {
   0% {
-    transform: translateY(-50%); }
+    transform: translateX(-50%); }
 
   100% {
-    transform: translateY(0%); }
+    transform: translateX(0%); }
 }
 
-.animate-marquee-top {
+.animate-marqueeTop {
   animation: marqueeTop 30s linear infinite;
 }
 
@@ -58,7 +58,7 @@ body {
   animation-play-state: paused;
 }
 
-.animate-marquee-bottom {
+.animate-marqueeBottom {
   animation: marqueeBottom 30s linear infinite;
 }
 
