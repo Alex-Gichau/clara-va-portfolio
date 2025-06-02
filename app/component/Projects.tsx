@@ -1,21 +1,32 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-interface Project {
-    id: number;
-    title: string;
-    desc: string
-}
+// interface Projects {
+//     id: number;
+//     title: string;
+//     desc: string
+// }
+
+const projects = [{
+    id: 1,
+    title: 'Portfolio',
+    desc: 'My Virtual Assistant'
+}, {
+    id: 2,
+    title: 'E-commerce',
+    desc: 'Online Store Management'
+
+}]
 
 export default function Projects() {
-    const [projects, setProjects] = useState<Project[]>([]);
+    // const [projects, setProjects] = useState<Projects[]>([]);
 
-    useEffect(() => {
-        // Fetch projects data from the API endpoint
-        fetch('/api/projects')
-            .then((res) => res.json())
-            .then(setProjects);
+    // useEffect(() => {
+    //     // Fetch projects data from the API endpoint
+    //     fetch('/api/projects')
+    //         .then((res) => res.json())
+    //         .then(setProjects);
         
-    }, []);
+    // }, []);
 
     return (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
