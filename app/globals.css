@@ -31,3 +31,37 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes marqueeTop {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marqueeBottom {
+  0% {
+    transform: translateY(-50%); }
+
+  100% {
+    transform: translateY(0%); }
+}
+
+.animate-marquee-top {
+  animation: marqueeTop 30s linear infinite;
+}
+
+.animate-marquee-top:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-bottom {
+  animation: marqueeBottom 30s linear infinite;
+}
+
+.animate-marquee-bottom:hover {
+  animation-play-state: paused;
+}
