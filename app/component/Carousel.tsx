@@ -6,7 +6,7 @@ interface CarouselProps {
 }
 
 const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
-    const duplicatedImages = [...images, ...images]; // Duplicate images for seamless scrolling
+    const duplicatedImages = [...images, ...images, ...images]; // Duplicate images for seamless scrolling
 
     return (
         <div className='w-full overflow-hidden'>
