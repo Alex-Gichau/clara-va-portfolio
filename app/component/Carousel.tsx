@@ -11,7 +11,7 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
     return (
         <div className='w-full overflow-hidden'>
             {/* Top Row */}
-            <div className='flex w-[200%] animate-marqueeTop'>
+            <div className='flex w-[200%] animate-marqueeTop'> 
                 {duplicatedImages.map((images, index) => (
                     <div key={`bottom-${index}`} className='flex-shrink-0'>
                         <img
