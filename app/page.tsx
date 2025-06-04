@@ -4,6 +4,9 @@ import Projects from './component/Projects';
 import Navbar from './component/Navbar';
 import Carousel from './component/Carousel';
 import { carouselData } from './data/carouselData';
+import RecentWork from './component/RecentWork';
+import Testimonials from './component/Testimonials';
+import { testimonialsData } from './data/testimonialsData ';
 
 export default function Home() {
   return (
@@ -17,6 +20,8 @@ export default function Home() {
         <Carousel images={carouselData} />
       </div>
       <Projects />
+      <RecentWork />
+      <Testimonials/>
     </div>
   );
 }
