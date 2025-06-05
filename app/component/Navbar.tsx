@@ -1,4 +1,5 @@
-import React from "react";;
+import React from "react";
+import Image from "next/image";
 
 interface NavbarProps {
     profileImage: string;
@@ -10,7 +11,7 @@ const Navbar: React.FC<NavbarProps> = ({ profileImage, name }) => {
         <nav className="sticky top-0 z-50 mt-5 bg-white bg-opacity-40 backdrop-blur border-b border-gray-200 py-4 px-6 flex justify-between items-center shadow-2xl text-black mx-auto max-w-xl my-1.5 rounded-full">
 
             <div className="flex items-center space-x-4">
-                <img src={profileImage} alt="Profile" className="w-10 h-10 rounded-full" />
+                <Image src={profileImage} alt="Profile" className="w-10 h-10 rounded-full" />
                 <span className="text-lg font-semibold">{name}</span>
             </div>
             <ul className="flex space-x-6">
