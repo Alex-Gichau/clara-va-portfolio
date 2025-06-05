@@ -41,7 +41,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
               />
               <h3 className='bold text-2xl'>{testimonialItem.name}</h3>
             </div>
-            <p>{testimonialItem.rating}</p>
+            <p>{testimonialItem.text}</p>
           </div>
         ))}
       </div>
