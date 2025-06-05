@@ -6,7 +6,7 @@ import Carousel from './component/Carousel';
 import { carouselData } from './data/carouselData';
 import RecentWork from './component/RecentWork';
 import Testimonials from './component/Testimonials';
-import { testimonialsData } from './data/testimonialsData ';
+import { testimonialsData } from './data/testimonialsData';
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       </div>
       <Projects />
       <RecentWork />
-      <Testimonials/>
+      <Testimonials testimonials={testimonialsData} />
     </div>
   );
 }

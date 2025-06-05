@@ -1,13 +1,24 @@
 import React from 'react';
-import { TestimonialsData } from "../data/testimonialsData";
+// It's good practice to alias imported types if they might conflict with component names
+// or to make their purpose clearer in the context of the component.
+import { TestimonialsData as TestimonialItemType } from "../data/testimonialsData";
+import Image from 'next/image';
 
 interface TestimonialsProps {
-  testimonials: TestimonialsData[];
+  testimonials: TestimonialItemType[];
 }
 
-const TestimonialsData: React.FC<TestimonialsProps> = ({ testimonials }) => {
-  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials]; // Duplicate testimonials for seamless scrolling
+// Component name should be PascalCase and match the intended import name.npmr 
+const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
+  // It's good practice to handle the case where testimonials might be undefined or empty
+  // before trying to use its properties like .length or spread it.
+  const safeTestimonials = testimonials || [];
+  const duplicatedTestimonials = [...safeTestimonials, ...safeTestimonials, ...safeTestimonials];
 
+  //Guard against empty testimonials array
+  if (safeTestimonials.length === 0) {
+    return <div className="text-center p-4">No testimonials to display.</div>;
+  }
   return (
     <div className='w-full overflow-hidden text-center'>
       <h2 className='text-4xl font-bold text-gray-950 mb-2 mt-8'>
@@ -16,23 +27,26 @@ const TestimonialsData: React.FC<TestimonialsProps> = ({ testimonials }) => {
       <p className='text-gray-600 mb-6'>
         What our clients say about us
       </p>
+      {/* Testimonials Card Items */}
       <div className='flex w-[200%] animate-marqueeTop p-3'>
-        {duplicatedTestimonials.map((testimonials, index) => (
+        {/* Use a more descriptive name for the mapped item */}
+        {duplicatedTestimonials.map((testimonialItem, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0 border p-6 rounded-lg hover:shadow-lg transition text-left w-64 h-40 mr-4'>
-            <div key={testimonials.id} className='flex flex-row justify-between items-center'>
-              <img
-                src={testimonials.profileImage}
-                alt={testimonials.name}
-                className='w-10 h-10 rounded-full'
+            {/* The key on the parent div is usually sufficient. If testimonialItem.id is unique, it's a better key. */}
+            <div className='flex flex-row justify-between items-center'>
+              <Image
+                src={testimonialItem.profileImage}
+                alt={testimonialItem.name}
+                className='w-10 h-10 rounded-full object-cover'
               />
-              <h3 className='bold text-2xl'>{testimonials.name}</h3>
+              <h3 className='bold text-2xl'>{testimonialItem.name}</h3>
             </div>
-            <p>{testimonials.rating}</p>
+            <p>{testimonialItem.rating}</p>
           </div>
         ))}
       </div>
     </div>
   );
 };
-
-export default TestimonialsProps;
+// Export the component itself, not its props interface.
+export default Testimonials;
