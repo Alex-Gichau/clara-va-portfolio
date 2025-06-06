@@ -1,6 +1,3 @@
-import React from 'react';
-// It's good practice to alias imported types if they might conflict with component names
-// or to make their purpose clearer in the context of the component.
 import { TestimonialsData as TestimonialItemType } from "../data/testimonialsData";
 import Image from 'next/image';
 

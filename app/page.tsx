@@ -7,7 +7,8 @@ import { carouselData } from './data/carouselData';
 import RecentWork from './component/RecentWork';
 import Testimonials from './component/Testimonials';
 import { testimonialsData } from './data/testimonialsData';
-import { fAQsData } from './data/faqsData';
+import FAQs from './component/FAQs';
+import { faQsData } from './data/faqsData';
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
       <Projects />
       <RecentWork />
       <Testimonials testimonials={testimonialsData} />
-      <FAQs faq={fAQsData}/>
+      <FAQs faqs={faQsData}/>
     </div>
   );
 }

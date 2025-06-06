@@ -1,5 +1,6 @@
 import React from 'react';
 import { CarouselData } from '../data/carouselData';
+import Image from 'next/image';
 
 interface CarouselProps {
   images: CarouselData[];
@@ -14,7 +15,7 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
       <div className='flex w-[200%] animate-marqueeTop p-3'>
         {duplicatedImages.map((images, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0'>
-            <img key={images.id}
+            <Image key={images.id}
               src={images.image}
               alt={images.caption}
               className='h-40 w-64 rounded-xl object-cover shadow-lg transition-all duration-300'/>
@@ -29,7 +30,7 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
       <div className='flex w-[200%] animate-marqueeBottom p-3'>
         {duplicatedImages.map((images, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0'>
-            <img key={images.id} src={images.image} alt={images.caption}
+            <Image key={images.id} src={images.image} alt={images.caption}
               className='h-40 w-64 rounded-xl object-cover shadow-lg transition-all duration-300 hover:scale-105'
             />
 

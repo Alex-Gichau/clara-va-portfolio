@@ -1,10 +1,11 @@
-export interface Faq {
+export interface Faqs {
   id: number;
   question: string;
   answer: string;
 }  
 
-export const FAQsData: Faq[] = [
+// This interface defines the structure of a FAQ item, which includes an id, question, and answer.
+export const faQsData: Faqs[] = [
   {
     id: 1,
     question: "What is the purpose of this website?",
