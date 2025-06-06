@@ -9,6 +9,7 @@ import Testimonials from './component/Testimonials';
 import { testimonialsData } from './data/testimonialsData';
 import FAQs from './component/FAQs';
 import { faQsData } from './data/faqsData';
+import Footer from "./component/Footer";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <RecentWork />
       <Testimonials testimonials={testimonialsData} />
       <FAQs faqs={faQsData}/>
+      <Footer/>
     </div>
   );
 }
