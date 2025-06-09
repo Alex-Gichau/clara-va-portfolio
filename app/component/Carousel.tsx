@@ -31,12 +31,12 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
         {duplicatedImages.map((images, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0'>
             <Image key={images.id} src={images.image} alt={images.caption}
-              className='h-40 w-64 rounded-xl object-cover shadow-lg transition-all duration-300 hover:scale-105'
+              className='h-40 z-0 w-64 rounded-xl object-cover shadow-lg transition-all duration-300 hover:scale-105'
             />
 
             {/* <div className='inset-0 flex items-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity -0 transition-opacity duration-300 group-hover:opacity-100'> */}
             <div>
-              <span className='text-white font-medium'>{images.caption}</span>
+              <span className='text-white font-medium z-1 mb-0'>{images.caption}</span>
             </div>
           </div>
         ))}
