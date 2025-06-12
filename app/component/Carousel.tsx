@@ -17,8 +17,8 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
           <div key={`bottom-${index}`} className='flex-shrink-0'>
             <Image key={images.id}
               src={images.image}
-              alt={images.caption}
-              className='h-40 w-64 rounded-xl object-cover shadow-lg transition-all duration-300'/>
+              alt={images.caption} fill
+              className='rounded-xl object-cover shadow-lg transition-all duration-300'/>
             <div>
               <span className='text-white font-medium'>{images.caption}</span>
             </div>
@@ -30,7 +30,7 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
       <div className='flex w-[200%] animate-marqueeBottom p-3'>
         {duplicatedImages.map((images, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0'>
-            <Image key={images.id} src={images.image} alt={images.caption}
+            <Image key={images.id} src={images.image} alt={images.caption} fill
               className='h-40 z-0 w-64 rounded-xl object-cover shadow-lg transition-all duration-300 hover:scale-105'
             />
 

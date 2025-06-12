@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <Navbar
-        profileImage='https://7a35885a.delivery.rocketcdn.me/cdn/2020/06/UMI.v1.png'
+        profileImage='https://placehold.co/40'
         name='Clara Njeri'
       />
       <Hero />
