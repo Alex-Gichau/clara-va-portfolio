@@ -34,8 +34,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
               <Image
                 src={testimonialItem.profileImage}
                 alt={testimonialItem.name}
-                className='w-10 h-10 rounded-full object-cover'
-              />
+                className='rounded-full object-cover' fill/>
               <h3 className='bold text-2xl'>{testimonialItem.name}</h3>
             </div>
             <p>{testimonialItem.text}</p>

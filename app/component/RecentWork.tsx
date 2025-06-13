@@ -4,19 +4,19 @@ const recentWork = [
   {
     id: 1,
     title: 'Portfolio',
-    image : 'https://seotoolspark.com/placeholder/600x300/D5D5D5/584959',
+    image : 'https://placehold.co/600x300',
     desc: 'My Virtual Assistant',
   },
   {
     id: 2,
     title: 'E-commerce',
-    image : 'https://seotoolspark.com/placeholder/600x300/D5D5D5/584959',
+    image : 'https://placehold.co/600x300',
     desc: 'Online Store Management',
   },
   {
     id: 3,
     title: 'Online Store',
-    image : 'https://seotoolspark.com/placeholder/600x300/D5D5D5/584959',
+    image : 'https://placehold.co/600x300',
     desc: 'Online Store Management',
   },
 ];
@@ -32,7 +32,7 @@ export default function RecentWork() {
         {recentWork.map((recentWork) => (
           <div key={recentWork.id} className=' grid grid-cols-2 border p-6 rounded-lg hover:shadow-lg transition'>
             <div>
-                <p className='text-10xl'><Image src={recentWork.image} className="w-100 h-50 object-cover rounded-2xl" alt={recentWork.title}/></p>
+                <p className='text-10xl'><Image src={recentWork.image} className="w-100 h-50 object-cover rounded-2xl" alt={recentWork.title} fill/></p>
             </div>
             <div className="text-left grid grid-rows-2 align-center">
             <h3 className='text-2xl font-semibold mb-0'>{recentWork.title}</h3>

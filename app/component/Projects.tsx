@@ -11,7 +11,7 @@ const projects = [{
     icon: <FiActivity />,
     desc: 'Online Store Management'
 }, {
-    id: 2,
+    id: 3,
     title: 'Online Store',
     icon: <FiGlobe />,
     desc: 'Online Store Management'

@@ -17,8 +17,8 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
           <div key={`bottom-${index}`} className='flex-shrink-0'>
             <Image key={images.id}
               src={images.image}
-              alt={images.caption} fill
-              className='rounded-xl object-cover shadow-lg transition-all duration-300'/>
+              alt={images.caption}
+              className='rounded-xl object-cover shadow-lg transition-all duration-300' fill/>
             <div>
               <span className='text-white font-medium'>{images.caption}</span>
             </div>
