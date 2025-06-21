@@ -1,5 +1,5 @@
 import { FiSend } from "react-icons/fi";
-// import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+import { FiLinkedin, FiX, FiInstagram, FiMail } from "react-icons/fi";
 
 export default function Footer() {
     return (
@@ -12,10 +12,12 @@ export default function Footer() {
                     Connect
                 </a>
                 <p className="text-sm mb-2">© Clara Njeri. All rights reserved.</p>
-                {/* <div className="flex flex-row justify-center space-x-4 mt-4">
-                    <p className="text-sm">Follow me on <FiGithub /> <FiLinkedin /> <FiTwitter />
-                    </p>
-                </div> */}
+                <div className="flex flex-row justify-center space-x-4 mt-4">
+                    <a href="#" className="hover:cursor-pointer"><FiLinkedin /></a>
+                    <a href="#" className="hover:cursor-pointer"><FiX /></a>
+                    <a href="#" className="hover:cursor-pointer"><FiInstagram /></a>
+                    <a href="#" className="hover:cursor-pointer"><FiMail /></a>
+                </div>
             </div>
         </footer>
     );

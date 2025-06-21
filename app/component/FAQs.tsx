@@ -1,15 +1,21 @@
-import { Faqs } from "../data/faqsData";
+"use client";
 import { useState } from "react";
+import { Faqs } from "../data/faqsData";
 
 interface FAQsProps {
     faqs: Faqs[];
 }
 
 const FAQs: React.FC<FAQsProps> = ({ faqs }) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // Use an array of booleans to track open/closed state for each FAQ
+  const [openStates, setOpenStates] = useState<boolean[]>(Array(faqs.length).fill(false));
 
   const toggleFAQ = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    setOpenStates((prev) => {
+      const newStates = [...prev];
+      newStates[index] = !newStates[index];
+      return newStates;
+    });
   };
 
   return (
@@ -20,15 +26,15 @@ const FAQs: React.FC<FAQsProps> = ({ faqs }) => {
         {faqs.map((faqItem, index) => (
           <div key={index} className="border-b py-4 text-left">
             <button
-              className="w-full flex justify-between items-center text-xl font-semibold focus:outline-none"
+              className="w-full flex justify-between items-center text-xl font-semibold focus:outline-none transition-all"
               onClick={() => toggleFAQ(index)}
-              aria-expanded={activeIndex === index}
+              aria-expanded={openStates[index]}
               aria-controls={`faq-answer-${index}`}
             >
               <span>{faqItem.question}</span>
-              <span className="ml-2">{activeIndex === index ? "−" : "+"}</span>
+              <span className="ml-2">{openStates[index] ? "−" : "+"}</span>
             </button>
-            {activeIndex === index && (
+            {openStates[index] && (
               <p
                 id={`faq-answer-${index}`}
                 className="text-gray-700 mt-2 transition-all"
