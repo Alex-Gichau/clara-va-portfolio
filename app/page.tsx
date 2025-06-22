@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <Navbar
-        profileImage='https://placehold.co/40'
+        profileImage='https://placehold.co/400'
         name='Clara Njeri'
       />
       <Hero />

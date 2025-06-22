@@ -25,19 +25,21 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
         What our clients say about us
       </p>
       {/* Testimonials Card Items */}
-      <div className='flex w-[200%] animate-marqueeTop p-3'>
-        {/* Use a more descriptive name for the mapped item */}
+      <div className='flex w-[200%] animate-marqueeTop p-3 overflow-hidden'>
+
         {duplicatedTestimonials.map((testimonialItem, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0 border p-6 rounded-lg hover:shadow-lg transition text-left w-64 h-40 mr-4'>
-            {/* The key on the parent div is usually sufficient. If testimonialItem.id is unique, it's a better key. */}
-            <div className='flex flex-row justify-between items-center'>
+
+            <div className='flex flex-row justify-between items-center overflow-none'>
               <Image
+                key={testimonialItem.id}
                 src={testimonialItem.profileImage}
                 alt={testimonialItem.name}
-                className='rounded-full object-cover' fill/>
-              <h3 className='bold text-2xl'>{testimonialItem.name}</h3>
+                className='rounded-full object-cover' fill
+              />
+              <h3 className='bold text-xl'><b>{testimonialItem.name}</b></h3>
             </div>
-            <p>{testimonialItem.text}</p>
+            <p className="text-gray-600 line-clamp-4">{testimonialItem.text}</p>
           </div>
         ))}
       </div>
@@ -46,3 +48,4 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
 };
 // Export the component itself, not its props interface.
 export default Testimonials;
+``

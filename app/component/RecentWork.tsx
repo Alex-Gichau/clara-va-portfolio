@@ -1,23 +1,27 @@
 import Image from "next/image";
+import { FiEye } from "react-icons/fi";
 
 const recentWork = [
   {
     id: 1,
     title: 'Portfolio',
-    image : 'https://placehold.co/600x300',
-    desc: 'My Virtual Assistant',
+    image: '/../../public/SNL.jpg',
+    desc: 'My Virtual AssistantMy Virtual AssistantMy Virtual AssistantMy Virtual AssistantMy Virtual AssistantMy Virtual Assistant',
+    project: 'https://google.com'
   },
   {
     id: 2,
     title: 'E-commerce',
-    image : 'https://placehold.co/600x300',
-    desc: 'Online Store Management',
+    image: 'https://placehold.co/600x300',
+    desc: 'Online Store ManagementOnline Store ManagementOnline Store ManagementOnline Store ManagementOnline Store Management',
+    project: 'https://google.com'
   },
   {
     id: 3,
     title: 'Online Store',
-    image : 'https://placehold.co/600x300',
-    desc: 'Online Store Management',
+    image: 'https://placehold.co/600x300',
+    desc: 'Online Store ManagementOnline Store ManagementOnline Store ManagementOnline Store ManagementOnline Store Management',
+    project: 'https://google.com'
   },
 ];
 
@@ -28,16 +32,22 @@ export default function RecentWork() {
       <p className='text-gray-600 mb-6'>
         Here are some of the recent projects I have worked on.
       </p>
-      <div className='grid gap-3 p-8 mx-auto max-w-5xl'>
+      <div className='grid grid-cols-2 gap-3 p-8 mx-auto max-w-5xl'>
         {recentWork.map((recentWork) => (
-          <div key={recentWork.id} className=' grid grid-cols-2 border p-6 rounded-lg hover:shadow-lg transition'>
-            <div>
-                <p className='text-10xl'><Image src={recentWork.image} className="w-100 h-50 object-cover rounded-2xl" alt={recentWork.title} fill/></p>
+          // Left side with the image
+          <div key={recentWork.id} className='grid grid-cols-2 p-3 rounded-lg hover:shadow-lg transition'>
+            <div className="border rounded-xl">
+              <a href="#"><FiEye/></a>
+              <p className='text-10xl mb-0'>
+                <Image src={recentWork.image} className="w-100 h-50 object-cover rounded-2xl" alt={recentWork.title} fill />
+              </p>
             </div>
-            <div className="text-left grid grid-rows-2 align-center">
-            <h3 className='text-2xl font-semibold mb-0'>{recentWork.title}</h3>
-            <p className='text-gray-600 h-10 mt-0 align-top'>{recentWork.desc}</p>
-            <a href="" className="">View Project</a>
+
+            {/* Right side with the text */}
+            <div className="text-left grid grid-rows-2 align-center pl-2">
+              <h3 className='text-2xl font-semibold'>{recentWork.title}</h3>
+              <p className='text-gray-600 line-clamp-3 '>{recentWork.desc}</p>
+              
             </div>
           </div>
         ))}
