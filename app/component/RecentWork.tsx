@@ -35,19 +35,17 @@ export default function RecentWork() {
       <div className='grid grid-cols-2 gap-3 p-8 mx-auto max-w-5xl'>
         {recentWork.map((recentWork) => (
           // Left side with the image
-          <div key={recentWork.id} className='grid grid-cols-2 p-3 rounded-lg hover:shadow-lg transition'>
-            <div className="border rounded-xl">
-              <a href="#"><FiEye/></a>
-              <p className='text-10xl mb-0'>
-                <Image src={recentWork.image} className="w-100 h-50 object-cover rounded-2xl" alt={recentWork.title} fill />
-              </p>
+          <div key={recentWork.id} className='grid grid-cols-2 p-3 rounded-lg hover:shadow-lg transition '>
+            <div className="border rounded-xl ">
+              <a href="#" className="hover:cursor-pointer bg-black hover:bg-gray-700 text-white w-fit z-5 h-auto rounded-full flex items-center justify-right p-2 m-2 transition-duration-200"><FiEye/></a>
+              <Image src={recentWork.image} className="h-10 object-cover rounded-2xl bg-pink-200" alt={recentWork.title} fill />
             </div>
 
             {/* Right side with the text */}
-            <div className="text-left grid grid-rows-2 align-center pl-2">
-              <h3 className='text-2xl font-semibold'>{recentWork.title}</h3>
-              <p className='text-gray-600 line-clamp-3 '>{recentWork.desc}</p>
-              
+            <div className="text-left grid grid-rows-2 align-center items-center pl-2">
+              <h3 className='text-2xl font-semibold border h-fit'>{recentWork.title}</h3>
+              <p className='text-gray-600 line-clamp-3 border '>{recentWork.desc}</p>
+
             </div>
           </div>
         ))}
