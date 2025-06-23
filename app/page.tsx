@@ -10,12 +10,13 @@ import { testimonialsData } from './data/testimonialsData';
 import FAQs from './component/FAQs';
 import { faQsData } from './data/faqsData';
 import Footer from "./component/Footer";
+import { footerData } from './data/footerData';
 
 export default function Home() {
   return (
     <div>
       <Navbar
-        profileImage='https://placehold.co/400'
+        profileImage='/../public/clara.png'
         name='Clara Njeri'
       />
       <Hero />
@@ -26,7 +27,7 @@ export default function Home() {
       <RecentWork />
       <Testimonials testimonials={testimonialsData} />
       <FAQs faqs={faQsData}/>
-      <Footer/>
+      <Footer contacts={footerData} />
     </div>
   );
 }

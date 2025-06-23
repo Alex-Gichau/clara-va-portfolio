@@ -1,6 +1,5 @@
 import { TestimonialsData as TestimonialItemType } from "../data/testimonialsData";
 import Image from 'next/image';
-
 interface TestimonialsProps {
   testimonials: TestimonialItemType[];
 }
@@ -48,4 +47,3 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
 };
 // Export the component itself, not its props interface.
 export default Testimonials;
-``
