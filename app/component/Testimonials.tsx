@@ -21,7 +21,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
         Testimonials
       </h2>
       <p className='text-gray-600 mb-6'>
-        What our clients say about us
+        Feedback and strive that improve every project.
       </p>
       {/* Testimonials Card Items */}
       <div className='flex w-[200%] animate-marqueeTop p-3 overflow-hidden'>
@@ -29,21 +29,24 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
         {duplicatedTestimonials.map((testimonialItem, index) => (
           <div key={`bottom-${index}`} className='flex-shrink-0 border p-6 rounded-lg hover:shadow-lg transition text-left w-64 h-40 mr-4'>
 
-            <div className='flex flex-row justify-between items-center overflow-none'>
+            <div className='flex flex-row justify-left items-center overflow-none gap-2'>
               <Image
-                key={testimonialItem.id}
+                key={testimonialItem.id} 
                 src={testimonialItem.profileImage}
                 alt={testimonialItem.name}
-                className='rounded-full object-cover' fill
+                width={48}
+                height={48}
+                className='rounded-full object-cover object-top w-8 h-8 border-2 border-blue-600'
               />
-              <h3 className='bold text-xl'><b>{testimonialItem.name}</b></h3>
+              <h3 className='bold text-xl justify-left'><b>{testimonialItem.name}</b></h3>
             </div>
-            <p className="text-gray-600 line-clamp-4">{testimonialItem.text}</p>
+            <p className="text-gray-600 font-light line-clamp-4 text-sm leading-4 my-2">{testimonialItem.text}</p>
           </div>
         ))}
       </div>
     </div>
   );
 };
+
 // Export the component itself, not its props interface.
 export default Testimonials;

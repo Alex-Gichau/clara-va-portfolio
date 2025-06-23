@@ -26,7 +26,7 @@ const FAQs: React.FC<FAQsProps> = ({ faqs }) => {
         {faqs.map((faqItem, index) => (
           <div key={index} className="border-b py-4 text-left">
             <button
-              className="w-full flex justify-between items-center text-xl font-semibold focus:outline-none transition-all"
+              className="w-full flex justify-between items-center text-xl text-gray-700 font-semibold focus:outline-none transition duration-200"
               onClick={() => toggleFAQ(index)}
               aria-expanded={openStates[index]}
               aria-controls={`faq-answer-${index}`}
