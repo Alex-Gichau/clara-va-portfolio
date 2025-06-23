@@ -10,7 +10,7 @@ const Navbar: React.FC<NavbarProps> = ({ name }) => {
         <nav className="sticky top-8 z-50 mt-5 scroll-mt-5 backdrop-blur blur-5xl border-b border-gray-200 drop-shadow-amber-100 py-4 px-6 flex justify-between items-center shadow-2xl text-black mx-auto max-w-xl my-1.5 rounded-full">
 
             <div className="flex items-center space-x-4">
-                <Image src="/clara.png" alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full" />
+                <Image src="/clara.png" alt="Profile" width={40} height={40} className="w-10 h-10 rounded-full object-cover object-top" />
                 <span className="text-lg font-semibold font-pacifico">{name}</span>
             </div>
             <ul className="flex space-x-2">

@@ -3,7 +3,7 @@ import Hero from './component/Hero';
 import Projects from './component/Projects';
 import Navbar from './component/Navbar';
 import Carousel from './component/Carousel';
-import { carouselData } from './data/carouselData';
+import { carouselTData, carouselBData } from './data/carouselData';
 import RecentWork from './component/RecentWork';
 import Testimonials from './component/Testimonials';
 import { testimonialsData } from './data/testimonialsData';
@@ -18,7 +18,7 @@ export default function Home() {
       <Navbar name='Clara Njeri'/>
       <Hero />
       <div className='max-w mx-auto'>
-        <Carousel images={carouselData} />
+        <Carousel imagesTop={carouselTData} imagesBottom={carouselBData} />
       </div>
       <Projects />
       <RecentWork />
