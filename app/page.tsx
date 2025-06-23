@@ -15,10 +15,7 @@ import { footerData } from './data/footerData';
 export default function Home() {
   return (
     <div>
-      <Navbar
-        profileImage='/../public/clara.png'
-        name='Clara Njeri'
-      />
+      <Navbar name='Clara Njeri'/>
       <Hero />
       <div className='max-w mx-auto'>
         <Carousel images={carouselData} />

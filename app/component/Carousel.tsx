@@ -14,11 +14,13 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
       {/* Top Row */}
       <div className='flex w-[200%] animate-marqueeTop p-3'>
         {duplicatedImages.map((images, index) => (
-          <div key={`bottom-${index}`} className='flex-shrink-0'>
+          <div key={`bottom-${index}`} className='flex-shrink-0 mr-4 group relative'>
             <Image key={images.id}
               src={images.image}
               alt={images.caption}
-              className='rounded-xl object-cover shadow-lg transition-all duration-300' fill/>
+              width={100}
+              height={40} // Adjust the height as needed
+              className='rounded-xl w-80 object-cover h-40 shadow-lg transition-all duration-300'/>
             <div>
               <span className='text-white font-medium'>{images.caption}</span>
             </div>
@@ -29,10 +31,13 @@ const CarouselProps: React.FC<CarouselProps> = ({ images }) => {
       {/* Bottom Row */}
       <div className='flex w-[200%] animate-marqueeBottom p-3'>
         {duplicatedImages.map((images, index) => (
-          <div key={`bottom-${index}`} className='flex-shrink-0'>
-            <Image key={images.id} src={images.image} alt={images.caption} fill
-              className='h-40 z-0 w-64 rounded-xl object-cover shadow-lg transition-all duration-300 hover:scale-105'
-            />
+          <div key={`bottom-${index}`} className='flex-shrink-0 mr-4 group relative'>
+            <Image key={images.id}
+              src={images.image}
+              alt={images.caption}
+              width={100}
+              height={40} // Adjust the height as needed
+              className='rounded-xl w-80 object-cover h-40 shadow-lg transition-all duration-300'/>
 
             {/* <div className='inset-0 flex items-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity -0 transition-opacity duration-300 group-hover:opacity-100'> */}
             <div>
