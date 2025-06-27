@@ -1,16 +1,18 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Hero from './component/Hero';
-import Projects from './component/Projects';
 import Navbar from './component/Navbar';
-import Carousel from './component/Carousel';
 import { carouselTData, carouselBData } from './data/carouselData';
-import RecentWork from './component/RecentWork';
-import Testimonials from './component/Testimonials';
 import { testimonialsData } from './data/testimonialsData';
-import FAQs from './component/FAQs';
 import { faQsData } from './data/faqsData';
-import Footer from "./component/Footer";
 import { footerData } from './data/footerData';
+
+const Projects = dynamic(() => import('./component/Projects'));
+const Carousel = dynamic(() => import('./component/Carousel'));
+const RecentWork = dynamic(() => import('./component/RecentWork'));
+const Testimonials = dynamic(() => import('./component/Testimonials'));
+const FAQs = dynamic(() => import('./component/FAQs'));
+const Footer = dynamic(() => import("./component/Footer"));
 
 export default function Home() {
   return (

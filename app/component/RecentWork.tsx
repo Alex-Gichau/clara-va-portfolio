@@ -1,5 +1,8 @@
+"use client";
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FiEye, FiPenTool, FiCalendar } from 'react-icons/fi';
+import Skeleton from './Skeleton';
 
 const recentWork = [
   {
@@ -41,6 +44,17 @@ const recentWork = [
 ];
 
 export default function RecentWork() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate data loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // 1.5 second delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className='w-full overflow-hidden text-center'>
       <h2 className='text-4xl font-bold text-gray-950 mb-2 mt-8'>
@@ -50,49 +64,73 @@ export default function RecentWork() {
         Here are some of the organizations I have worked with and the roles I have held.
       </p>
       <div className='grid grid-cols-2 gap-3 p-5 mx-auto max-w-5xl'>
-        {recentWork.map((recentWork) => (
-          // Left side with the image
-          <div
-            key={recentWork.id}
-            className='grid grid-cols-2 p-3 rounded-lg transition border border-gray-200'
-          >
+        {isLoading ? (
+          // Skeleton loading state
+          Array.from({ length: 4 }).map((_, index) => (
             <div
-              className='rounded-xl relative overflow-hidden'
-              style={{ width: '100%', height: '120px' }}
+              key={index}
+              className='grid grid-cols-2 p-3 rounded-lg transition border border-gray-200'
             >
-              <Image
-                src={recentWork.image}
-                alt={recentWork.title}
-                fill
-                className='object-cover rounded-2xl'
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+              <div
+                className='rounded-xl relative overflow-hidden'
+                style={{ width: '100%', height: '120px' }}
+              >
+                <Skeleton width="100%" height="100%" className="rounded-xl" />
+              </div>
 
-              />
+              <div className='text-left grid grid-rows-2 align-center items-center p-2'>
+                <div className="flex justify-between items-center mb-2">
+                  <Skeleton width="70%" height="1.5em" />
+                  <Skeleton width="2em" height="2em" className="rounded-full" />
+                </div>
+                <Skeleton width="90%" height="1em" className="mb-1" />
+                <Skeleton width="80%" height="1em" />
+              </div>
             </div>
+          ))
+        ) : (
+          // Actual content
+          recentWork.map((recentWork) => (
+            <div
+              key={recentWork.id}
+              className='grid grid-cols-2 p-3 rounded-lg transition border border-gray-200'
+            >
+              <div
+                className='rounded-xl relative overflow-hidden'
+                style={{ width: '100%', height: '120px' }}
+              >
+                <Image
+                  src={recentWork.image}
+                  alt={recentWork.title}
+                  fill
+                  className='object-cover rounded-2xl'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                />
+              </div>
 
-            {/* Right side with the text */}
-            <div className='text-left grid grid-rows-2 align-center items-center p-2'>
-              <h3 className='text-md font-semibold flex'>
-                {recentWork.title}
-                <a
-                  href='#'
-                  className='hover:cursor-pointer relative bg-black hover:bg-blue-600 text-white h-auto rounded-full flex p-1 transition duration-200 ml-auto text-sm'
-                >
-                  <FiEye />
-                </a>
-              </h3>
-              <p className='text-gray-500 text-xs flex items-center justify-left gap-1.5'>
-                <FiCalendar />
-                {recentWork.projectYear}
-                <FiPenTool />
-                {recentWork.work}
-              </p>
-              <p className='text-gray-600 line-clamp-3 tracking-tight text-xs leading-4'>
-                {recentWork.desc}
-              </p>
+              <div className='text-left grid grid-rows-2 align-center items-center p-2'>
+                <h3 className='text-md font-semibold flex'>
+                  {recentWork.title}
+                  <a
+                    href='#'
+                    className='hover:cursor-pointer relative bg-black hover:bg-blue-600 text-white h-auto rounded-full flex p-1 transition duration-200 ml-auto text-sm'
+                  >
+                    <FiEye />
+                  </a>
+                </h3>
+                <p className='text-gray-500 text-xs flex items-center justify-left gap-1.5'>
+                  <FiCalendar />
+                  {recentWork.projectYear}
+                  <FiPenTool />
+                  {recentWork.work}
+                </p>
+                <p className='text-gray-600 line-clamp-3 tracking-tight text-xs leading-4'>
+                  {recentWork.desc}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

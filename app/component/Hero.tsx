@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="flex flex-row items-center justify-center max-w-3xl mx-auto gap-10 my-10">
+        <section className="flex flex-row items-center justify-center max-w-3xl mx-auto gap-10 my-10 md:flex-col ">
             <div className="relative flex items-center justify-center">
                 {/* Gray circle background */}
                 <div className="absolute w-[20rem] h-[20rem] bg-yellow-200 rounded-full -z-10 mr-5 blur-2xl" />
@@ -13,6 +13,7 @@ export default function Hero() {
                     width={100}
                     height={150}
                     className="h-100 border w-150 object-cover object-top"
+                    priority
                 />
                 <div
                     className="absolute bottom-0 left-0 w-full h-1/3 pointer-events-none"
