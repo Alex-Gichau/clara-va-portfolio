@@ -63,13 +63,13 @@ export default function RecentWork() {
       <p className='text-gray-600 mb-4'>
         Here are some of the organizations I have worked with and the roles I have held.
       </p>
-      <div className='grid grid-cols-2 gap-3 p-5 mx-auto max-w-5xl'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-3 p-5 mx-auto max-w-5xl'>
         {isLoading ? (
           // Skeleton loading state
           Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
-              className='grid grid-cols-2 p-3 rounded-lg transition border border-gray-200'
+              className='grid grid-cols-1 md:grid-cols-2 p-3 rounded-lg transition border border-gray-200'
             >
               <div
                 className='rounded-xl relative overflow-hidden'
@@ -93,7 +93,7 @@ export default function RecentWork() {
           recentWork.map((recentWork) => (
             <div
               key={recentWork.id}
-              className='grid grid-cols-2 p-3 rounded-lg transition border border-gray-200'
+              className='grid grid-cols-1 md:grid-cols-2 p-3 rounded-lg transition border border-gray-200'
             >
               <div
                 className='rounded-xl relative overflow-hidden'
