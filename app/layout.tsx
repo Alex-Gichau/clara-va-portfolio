@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`} // 3. Add Pacifico variable to body
+        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased scroll-smooth`} // 3. Add Pacifico variable to body
       >
         {children}
       </body>
