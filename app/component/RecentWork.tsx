@@ -3,8 +3,19 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FiEye, FiPenTool, FiCalendar } from 'react-icons/fi';
 import Skeleton from './Skeleton';
+import Modal from './Modal'; // Import the new Modal component
 
-const recentWork = [
+interface WorkItem {
+  id: number;
+  title: string;
+  image: string;
+  desc: string;
+  projectUrl: string;
+  projectYear: string;
+  work: string;
+}
+
+const recentWork: WorkItem[] = [
   {
     id: 1,
     title: 'Customer Service Rep.',
@@ -45,15 +56,26 @@ const recentWork = [
 
 export default function RecentWork() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedWork, setSelectedWork] = useState<WorkItem | null>(null);
 
   useEffect(() => {
-    // Simulate data loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // 1.5 second delay
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const openModal = (work: WorkItem) => {
+    setSelectedWork(work);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedWork(null);
+  };
 
   return (
     <div className='w-full overflow-hidden text-center'>
@@ -65,7 +87,6 @@ export default function RecentWork() {
       </p>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-3 p-5 mx-auto max-w-5xl'>
         {isLoading ? (
-          // Skeleton loading state
           Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
@@ -89,10 +110,9 @@ export default function RecentWork() {
             </div>
           ))
         ) : (
-          // Actual content
-          recentWork.map((recentWork) => (
+          recentWork.map((work) => (
             <div
-              key={recentWork.id}
+              key={work.id}
               className='grid grid-cols-1 md:grid-cols-2 p-3 rounded-lg transition border border-gray-200'
             >
               <div
@@ -100,8 +120,8 @@ export default function RecentWork() {
                 style={{ width: '100%', height: '120px' }}
               >
                 <Image
-                  src={recentWork.image}
-                  alt={recentWork.title}
+                  src={work.image}
+                  alt={work.title}
                   fill
                   className='object-cover rounded-2xl'
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -110,28 +130,47 @@ export default function RecentWork() {
 
               <div className='text-left grid grid-rows-2 align-center items-center p-2'>
                 <h3 className='text-md font-semibold flex'>
-                  {recentWork.title}
-                  <a
-                    href='#'
+                  {work.title}
+                  <button
+                    onClick={() => openModal(work)}
                     className='hover:cursor-pointer relative bg-black hover:bg-blue-600 text-white h-auto rounded-full flex p-1 transition duration-200 ml-auto text-sm'
                   >
                     <FiEye />
-                  </a>
+                  </button>
                 </h3>
                 <p className='text-gray-500 text-xs flex items-center justify-left gap-1.5'>
                   <FiCalendar />
-                  {recentWork.projectYear}
+                  {work.projectYear}
                   <FiPenTool />
-                  {recentWork.work}
+                  {work.work}
                 </p>
                 <p className='text-gray-600 line-clamp-3 tracking-tight text-xs leading-4'>
-                  {recentWork.desc}
+                  {work.desc}
                 </p>
               </div>
             </div>
           ))
         )}
       </div>
+
+      {selectedWork && (
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <h2 className="text-2xl font-bold mb-4">{selectedWork.title}</h2>
+          <p className="text-gray-700 mb-4">{selectedWork.desc}</p>
+          <p className="text-gray-500 text-sm">Year: {selectedWork.projectYear}</p>
+          <p className="text-gray-500 text-sm">Company: {selectedWork.work}</p>
+          {selectedWork.projectUrl && (
+            <a
+              href={selectedWork.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline mt-4 block"
+            >
+              View Project
+            </a>
+          )}
+        </Modal>
+      )}
     </div>
   );
 }
