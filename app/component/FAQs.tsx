@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Faqs } from "../data/faqsData";
 import Skeleton from './Skeleton';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FAQsProps {
     faqs: Faqs[];
@@ -55,14 +56,20 @@ const FAQs: React.FC<FAQsProps> = ({ faqs }) => {
                 <span>{faqItem.question}</span>
                 <span className="ml-2">{openStates[index] ? "−" : "+"}</span>
               </button>
-              {openStates[index] && (
-                <p
-                  id={`faq-answer-${index}`}
-                  className="text-gray-700 mt-2 transition-all"
-                >
-                  {faqItem.answer}
-                </p>
-              )}
+              <AnimatePresence initial={false}>
+                {openStates[index] && (
+                  <motion.p
+                    id={`faq-answer-${index}`}
+                    className="text-gray-700 mt-2"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    {faqItem.answer}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </div>
           ))
         )}
