@@ -25,22 +25,32 @@ const Carousel: React.FC<CarouselProps> = ({ imagesTop, imagesBottom }) => {
     let animationFrameId: number;
 
     const animateScroll = () => {
-      // For the top row (scrolling left)
+      if (!carouselTopRef.current || !carouselBottomRef.current) return;
+
+      const singleSetWidthTop = carouselTopRef.current.scrollWidth / 3;
+      const singleSetWidthBottom = carouselBottomRef.current.scrollWidth / 3;
+
+      // Top Row (scrolling left)
       setOffsetTop((prevOffset) => {
-        const newOffset = prevOffset - scrollSpeed;
-        // If we scroll past the first set of original images, jump back to the start of the second set
-        if (carouselTopRef.current && newOffset <= -carouselTopRef.current.scrollWidth / 3) {
-          return 0; // Reset to the beginning of the second set
+        let newOffset = prevOffset - scrollSpeed;
+        if (newOffset <= -singleSetWidthTop) {
+          // Jump back without transition
+          carouselTopRef.current!.style.transition = 'none';
+          newOffset = 0; // Reset to the start of the second set
+        } else {
+          // Apply transition for smooth movement
+          carouselTopRef.current!.style.transition = 'transform 0.05s linear';
         }
         return newOffset;
       });
 
-      // For the bottom row (scrolling right)
+      // Bottom Row (scrolling right)
       setOffsetBottom((prevOffset) => {
-        const newOffset = prevOffset + scrollSpeed;
-        // If we scroll past the first set of original images, jump back to the start of the second set
-        if (carouselBottomRef.current && newOffset >= carouselBottomRef.current.scrollWidth / 3) {
-          return 0; // Reset to the beginning of the second set
+        let newOffset = prevOffset + scrollSpeed;
+        if (newOffset >= singleSetWidthBottom) {
+          // Jump back without transition
+          carouselBottomRef.current!.style.transition = 'none';
+          newOffset = 0; // Reset to the start of the second set
         }
         return newOffset;
       });
