@@ -26,7 +26,7 @@ export default function Hero({ className }: { className?: string }) {
             <div className="flex flex-col items-center text-center md:items-start md:text-left gap-6">
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">Your Professional Virtual Assistant</h1>
                 <p className="text-lg md:text-xl text-gray-700">I am a 5-star rated assistant with proficiency in customer service, travel research, and content scheduling.</p>
-                <div className="flex flex-col md:flex-row gap-4 w-full justify-center md:justify-start mt-4">
+                <div className="flex flex-row flex-wrap justify-center md:justify-start gap-4 w-full mt-4">
                     <button className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition shadow-md flex flex-row gap-3 items-center"><FiArrowDown />View Projects</button>
                     <button className="px-8 py-3 text-blue-600 border border-blue-600 rounded-full hover:bg-blue-50 transition flex flex-row gap-3 items-center"><FiPhoneCall />Book A Call</button>
                 </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Hero from './component/Hero';
 import Navbar from './component/Navbar';
-import { carouselTData, carouselBData } from './data/carouselData';
 import { testimonialsData } from './data/testimonialsData';
 import { faQsData } from './data/faqsData';
 import { footerData } from './data/footerData';
@@ -21,7 +20,7 @@ export default function Home() {
       <div className="flex flex-col min-h-screen justify-center">
         <Hero className="flex-grow"/>
         <div className='max-w mx-auto flex-grow'>
-          <Carousel imagesTop={carouselTData} imagesBottom={carouselBData} />
+          <Carousel />
         </div>
       </div>
       <Projects />
