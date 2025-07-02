@@ -18,9 +18,11 @@ export default function Home() {
   return (
     <div>
       <Navbar name='Clara Njeri'/>
-      <Hero />
-      <div className='max-w mx-auto'>
-        <Carousel imagesTop={carouselTData} imagesBottom={carouselBData} />
+      <div className="flex flex-col min-h-screen justify-center">
+        <Hero className="flex-grow"/>
+        <div className='max-w mx-auto flex-grow'>
+          <Carousel imagesTop={carouselTData} imagesBottom={carouselBData} />
+        </div>
       </div>
       <Projects />
       <RecentWork />

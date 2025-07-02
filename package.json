@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.4",
     "framer-motion": "^12.15.0",
     "g": "^2.0.1",
     "googleapis": "^150.0.1",
