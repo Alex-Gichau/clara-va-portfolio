@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FiEye, FiPenTool, FiCalendar } from 'react-icons/fi';
 import Skeleton from './Skeleton';
@@ -77,8 +77,10 @@ export default function RecentWork() {
     setSelectedWork(null);
   };
 
+  const workExperienceRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className='w-full overflow-hidden text-center'>
+    <div ref={workExperienceRef} className='w-full overflow-hidden text-center'>
       <h2 className='text-4xl font-bold text-gray-950 mb-2 mt-8'>
         Work Experience
       </h2>
@@ -154,7 +156,7 @@ export default function RecentWork() {
       </div>
 
       {selectedWork && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Modal isOpen={isModalOpen} onClose={closeModal} backgroundRef={workExperienceRef}>
           <h2 className="text-2xl font-bold mb-4">{selectedWork.title}</h2>
           <p className="text-gray-700 mb-4">{selectedWork.desc}</p>
           <p className="text-gray-500 text-sm">Year: {selectedWork.projectYear}</p>

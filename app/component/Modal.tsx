@@ -4,14 +4,32 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  backgroundRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, backgroundRef }) => {
+  React.useEffect(() => {
+    const backgroundElement = backgroundRef?.current;
+
+    if (isOpen && backgroundElement) {
+      backgroundElement.style.filter = 'blur(8px)';
+      backgroundElement.style.transition = 'filter 0.3s ease-in-out';
+    } else if (backgroundElement) {
+      backgroundElement.style.filter = 'none';
+    }
+
+    return () => {
+      if (backgroundElement) {
+        backgroundElement.style.filter = 'none';
+      }
+    };
+  }, [isOpen, backgroundRef]);
+
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-md flex items-center justify-center z-50 p-4"
+      className="fixed inset-0  bg-opacity-75 backdrop-blur-md flex items-center justify-center z-50 p-4"
       onClick={onClose} // Close modal when clicking outside content
     >
       <div
